@@ -1,6 +1,6 @@
 .article{
   color: white;
-  background: rgba(199, 0, 0, 0.76);
+  background: linear-gradient(to top, hsla(24, 86%, 51%, 0.90), hsla(24, 86%, 60%, 0.9));
   padding: 1rem;
   text-align: left;
   display: flex;
@@ -10,7 +10,7 @@
   transform: translateX(0rem);
   filter: brightness(1);
   border-radius: .5rem;
-  border: #F18841 solid 2px;
+  border: hsl(24, 86%, 60%) solid 2px;
 }
 
 .article.small{
@@ -30,6 +30,8 @@
 .article.big{
   transition: all .2s;
   gap: .2rem;
+  cursor: pointer;
+
 }
 
 .article .text,
@@ -76,6 +78,6 @@
 }
 
 .article .close:hover{
-  color: #F18841;
+  color: #ff0000;
   transform: scale(1.3);
 }
