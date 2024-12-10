@@ -1,0 +1,130 @@
+.topBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 6.5rem;
+  width: 100%;
+  padding: 1rem 0rem;
+  background-color: #F18841;
+  z-index: 2;
+}
+
+/*TOP*/
+
+.topBar .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 1.5rem;
+  color: hsl(0, 0%, 90%);
+}
+
+/*TOP LEFT*/
+.filtersButton {
+  display: flex;
+  align-items: flex-end;
+  gap: .5rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.filtersButton.enabled,
+.filtersButton:hover {
+  color: #EF863F;
+}
+
+.filtersButton.enabled svg {
+  transform: rotate(90deg);
+}
+
+.filtersButton svg {
+  font-size: 1.3rem;
+  transition: all .2s;
+}
+
+
+/*TOP CENTER*/
+
+.topBar .top h1 {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  text-align: center;
+  font-family: 'GothamMedium' !important;
+}
+
+/*TOP RIGHT*/
+
+.connect {
+  display: flex;
+  gap: .5rem;
+}
+
+.connect button {
+  display: flex;
+  gap: .5rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.connect button:hover {
+  color: #EF863F;
+}
+
+/*BOTTOM*/
+.topBar .bottom {
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  gap: 2rem;
+}
+
+
+/*BOTTOM LEFT*/
+
+.topBar .bottom .searchbar {
+  background-color: hsla(0, 0%, 100%, 0.20);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 1rem;
+  border-radius: 5rem;
+  color: hsl(0, 0%, 100%);
+  transition: all .2s;
+  position: relative;
+}
+
+.topBar .bottom .searchbar svg {
+  position: absolute;
+  pointer-events: none;
+}
+
+.topBar .bottom input {
+  width: 100%;
+  height: 100%;
+  border-radius: .5rem;
+  padding-left: 2rem;
+}
+
+.topBar .bottom input {
+  width: 100%;
+  height: 100%;
+  border-radius: .5rem;
+}
+
+.topBar .bottom .searchbar:focus-within {
+  filter: contrast(1.3);
+}
+
+/*BOTTOM RIGHT*/
+.topBar .bottom img {
+  height: 1.5rem;
+  opacity: 0.9;
+  pointer-events: none;
+  user-select: none;
+}

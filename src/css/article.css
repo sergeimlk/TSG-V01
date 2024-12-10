@@ -1,0 +1,81 @@
+.article{
+  color: white;
+  background: rgba(199, 0, 0, 0.76);
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all .2s !important;
+  transform: translateX(0rem);
+  filter: brightness(1);
+  border-radius: .5rem;
+  border: #F18841 solid 2px;
+}
+
+.article.small{
+  padding: .8rem 1rem;
+  transition: all .2s;
+  cursor: pointer;
+  transform: translateX(0rem);
+  filter: brightness(1);
+}
+
+.article.small:hover{
+  transform: translateX(.5rem);
+  filter: brightness(1.1);
+  transition: all .2s;
+}
+
+.article.big{
+  transition: all .2s;
+  gap: .2rem;
+}
+
+.article .text,
+.article .list{
+  color: hsl(0, 0%, 88%);
+  font-size: 0.9rem;
+}
+
+.article.small .title{
+  line-height: 1.5;
+  margin: 0 0 .5rem;
+}
+
+.article .title{
+  font-size: 1.2rem;
+  line-height: 3;
+}
+
+.article .image{
+  max-height: 33vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.article .image img{
+  border-radius: .5rem;
+  object-fit: contain;
+  width: 100%;
+}
+
+.article.big .close{
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.article .close{
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  transition: all .2s;
+  color: hsl(0, 0%, 80%);
+}
+
+.article .close:hover{
+  color: #F18841;
+  transform: scale(1.3);
+}
