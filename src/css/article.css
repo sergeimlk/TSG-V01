@@ -1,6 +1,6 @@
 .article{
-  color: white;
-  background: linear-gradient(to top, hsla(24, 86%, 51%, 0.90), hsla(24, 86%, 60%, 0.9));
+  color: #F18841;
+  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.05), hsla(0, 0%, 100%, 0.05));
   padding: 1rem;
   text-align: left;
   display: flex;
@@ -9,12 +9,13 @@
   transition: all .2s !important;
   transform: translateX(0rem);
   filter: brightness(1);
-  border-radius: .5rem;
-  border: hsl(24, 86%, 60%) solid 3px;
+  border-radius: 1.5rem;
+  border: hsla(0, 0%, 100%, 0.5) solid 0.05rem;
+  backdrop-filter: blur(20px); /* Flou appliqué à l'arrière-plan */
 }
 
 .article.small{
-  padding: .8rem 1rem;
+  padding: 1.5rem 3rem;
   transition: all .2s;
   cursor: pointer;
   transform: translateX(0rem);
@@ -24,8 +25,9 @@
 
 .article.small:hover{
   transform: translateX(.5rem);
-  filter: brightness(1.4);
+  filter: brightness(1.2);
   transition: all .1s;
+  border: hsla(0, 0%, 100%, 0.85) solid 0.05rem;
 }
 
 .article.big{
@@ -36,7 +38,7 @@
 
 .article .text,
 .article .list{
-  color: hsl(20, 100%, 9%);
+  color: #F5F5F5;
   font-size: 0.9rem;
   flex: 1; /* Prend tout l'espace disponible */
 }

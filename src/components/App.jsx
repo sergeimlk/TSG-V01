@@ -10,6 +10,8 @@ function isChrome() {
   return /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
 }
 
+
+
 function Homepage({
   keycloak,
   isAuth

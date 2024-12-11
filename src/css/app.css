@@ -1,9 +1,50 @@
+/* :root {
+  --orange-cmyk: 0, 56, 78, 0;
+  --orange-rgb: 241, 136, 65;
+  --orange-web: #F18841;
+  --orange-pantone: 164CP;
+
+  --black-cmyk: 40, 40, 40, 100;
+  --black-rgb: 16, 12, 8;
+  --black-web: #100C08;
+  --black-pantone: BLACK CP;
+
+  --white-cmyk: 0, 0, 0, 0;
+  --white-rgb: 255, 255, 255;
+  --white-web: #FFFFFF;
+
+  --grey-web: #F5F5F5;
+  --grey-rgb: 245, 245, 245;
+} */
+
 main{
+  margin: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   height:100%;
   box-sizing: border-box;
   align-items: center;
+  /* background-image: url('https://cdn.sanity.io/images/qo3mgayk/attributeoptimization/12de306a165c09dea6528951cd41e142a4d9aff4-941x1333.jpg?w=941&h=1333&auto=format'); */
+  /* background-image: url('https://www.medicaltools.it/wp-content/uploads/2022/07/back4-winback-tecarterapia-8-1024x538.jpg'); */
+  background: url("https://i.ibb.co/1QRpL0x/winback-wallpaper-Page-4.jpg") no-repeat center center fixed;
+  animation: shrinkBackground 2s forwards;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Filtre noir semi-transparent */
+  backdrop-filter: blur(5px); /* Flou appliqué à l'arrière-plan */
+  z-index: -2;
 }
 
 .mainContent{
@@ -31,6 +72,7 @@ main{
 
 * {
   scrollbar-width: 8px 8px; /* For Firefox */
+  box-sizing: border-box;
 }
 
 *::-webkit-scrollbar {
@@ -40,13 +82,13 @@ main{
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #f1874183;
-  border: solid 5px #F18841;
+  background-color: #f18741ac;
+  border: solid 2px #F18841;
   border-radius: 2rem;
   transition: all .2s;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #ffffff83;
-  border-width: 5px;
+  background-color: #ffffff;
+  border-width: 0.25rem;
 }
