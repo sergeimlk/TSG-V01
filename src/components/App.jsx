@@ -17,7 +17,7 @@ function Homepage({
 
   //console.log('kclogin',isAuth,keycloak.isTokenExpired(),keycloak)
   const [tags,setTags] = useState([])
-  const [searchQuery, setSearchQuery] = useState("Error 237");
+  const [searchQuery, setSearchQuery] = useState("Error");
   const [searchResults, setSearchResults] = useState(performSearch(searchQuery));
   const [selectedPage, setSelectedPage] = useState(false)
   const [seeFilters,setSeeFilters] = useState(false)

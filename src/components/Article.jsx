@@ -14,39 +14,26 @@ function Article({
   isExpert,
   ...props
 }) {
-
   const jsonData = files.filesMap[page].default.data;
   const imgData = files.filesMap[page].default.images;
   const controls = useAnimation();
-  const initial = isBig ? 'hidden' : 'hidden';
-  //const isH = jsonData[0].data.includes("REPAIR")
-
-  const animationVariants = {
-    hidden: { 
-      opacity: 0, 
-      height: 0, 
+  const animationVariants = { // Définition des variants ici
+    hidden: {
+      opacity: 0,
+      height: 0,
       margin:0,
     },
-    visible: { 
-      opacity: 1, 
-      height: 'auto', 
+    visible: {
+      opacity: 1,
+      height: 'auto',
       transition: { duration: 0.2 },
       margin:" 0 0 .5rem"
     },
   };
 
-  useEffect(() => {
-    if(isBig){
-      controls.start("visible")
-    }else{
-      controls.start("hidden")
-    }
-  })
+  // ...
 
-  const smallData = jsonData.filter((elem,id) => id === 0 || id === 2)
-
-  const reducedData = [];
-
+  const reducedData = []; // Définition de la variable ici
   for(let i = 0 ; i < jsonData.length; i++){
     const data = jsonData[i];
     if((data.type === 'title') && (data.data === 'Repair' || data.data === 'Solution')){
@@ -57,13 +44,15 @@ function Article({
     }
   }
 
+  const smallData = jsonData.filter((elem,id) => id === 0 || id === 2); // Définition de la variable ici
+
   useEffect(() => {
     if(isBig){
       controls.start("visible")
     }else{
       controls.start("hidden")
     }
-  },[controls, isBig])
+  })
 
   const handleClose = () => {
     controls.start("hidden").then(() => {
@@ -72,7 +61,7 @@ function Article({
   };
 
   const AnimatedElement = ({
-    Component, 
+    Component,
     children,
     className,
     id,
@@ -80,7 +69,6 @@ function Article({
     style,
     ...props
   }) => {
-
     const Comp = motion[Component];
     return (
       <Comp
@@ -91,7 +79,7 @@ function Article({
           ...style
         }}
         {...(animate && { // Conditionally add motion props if id !== 0
-          initial: initial,
+          initial: isBig ? 'hidden' : 'hidden',
           animate: controls,
           exit: "exit",
           variants: animationVariants
@@ -101,10 +89,9 @@ function Article({
         {children}
       </Comp>
     );
-  } 
+  };
 
   const parseImg = (data,id) => {
-
     return (
       <motion.div
         key={id}
@@ -125,32 +112,28 @@ function Article({
   };
 
   const parseSwitch = (data,id,isDemo) => {
-
     const type = data.type;
     const innerData = data.data;
-
     switch (type) {
       case 'title':
-        return <AnimatedElement 
-          Component={'h2'} 
+        return <AnimatedElement
+          Component={'h2'}
           className={'title'}
-          animate={isDemo ? false : (id !== 0)}  
+          animate={isDemo ? false : (id !== 0)}
         >
           {innerData.split('_').join(' ')}
         </AnimatedElement>
-
       case 'text':
-        return <AnimatedElement 
-          Component={'p'} 
+        return <AnimatedElement
+          Component={'p'}
           className={'text'}
-          animate={isDemo ? false : (id !== 2)}  
+          animate={isDemo ? false : (id !== 2)}
         >
           {data.data}
         </AnimatedElement>
-
       case 'list':
-        return <AnimatedElement 
-          Component={'p'} 
+        return <AnimatedElement
+          Component={'p'}
           className={'list'}
           style={{
             paddingLeft:data.indentation / 3,
@@ -166,17 +149,28 @@ function Article({
   };
 
   const parseAll = () => {
-    
     if(isBig){
       let dataToUse = reducedData;
       if(isExpert){
         dataToUse = jsonData
       }
-
       return dataToUse.map((elem,id) => parseSwitch(elem,id,false));
     }
     return smallData.map((elem,id) => parseSwitch(elem,id,true));
   };
+
+  const handleOutsideClick = (event) => {
+    if (!event.target.classList.contains('article')) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   return (
     jsonData ? (
@@ -194,18 +188,18 @@ function Article({
       >
         {
           isBig &&
-          <AnimatedElement 
-            Component={"button"}
-            className={'close'}
-            onClick={handleClose}
-            style={{
-              width:"auto"
-            }}
-          >
-            <FontAwesomeIcon 
-              icon={faClose} 
-            />
-          </AnimatedElement>
+            <AnimatedElement
+              Component={"button"}
+              className={'close'}
+              onClick={handleClose}
+              style={{
+                width:"auto"
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faClose}
+              />
+            </AnimatedElement>
         }
         {
           parseAll()
@@ -220,21 +214,17 @@ function Article({
 export default React.memo(Article, (prevProps, nextProps) => {
   const prevKeys = Object.keys(prevProps);
   const nextKeys = Object.keys(nextProps);
-
   if (prevKeys.length !== nextKeys.length) {
     console.log('Props length changed:', { prevProps, nextProps });
     return false;
   }
-
   for (let key of prevKeys) {
     if ((key === 'onClose') || ( key === 'onOpen')) {
       continue; // Skip comparison for onClose if you are sure it doesn't change the behavior
     }
-
     else if (prevProps[key] !== nextProps[key]) {
       return false;
     }
   }
-
   return true;
 });

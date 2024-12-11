@@ -148,7 +148,7 @@ audio:not([controls]) {
 }
 
 .shadow{
-  box-shadow: 0 0 1rem hsla(0, 0%, 15%, 1);
+  box-shadow: 0 0 1rem #d27537;
 }
 
 .reducedWidth{

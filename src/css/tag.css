@@ -9,7 +9,7 @@
 }
 
 .tag:hover{
-  filter: contrast(0.9);
+  filter: contrast(0.8);
 }
 
 .tag.enabled { box-shadow: inset 0 0 0 2px #ffffff, 0 5px 10px #83471fcb; 
