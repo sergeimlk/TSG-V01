@@ -10,7 +10,7 @@
   transform: translateX(0rem);
   filter: brightness(1);
   border-radius: .5rem;
-  border: hsl(24, 86%, 60%) solid 2px;
+  border: hsl(24, 86%, 60%) solid 3px;
 }
 
 .article.small{
@@ -19,12 +19,13 @@
   cursor: pointer;
   transform: translateX(0rem);
   filter: brightness(1);
+  border-radius: 1.5rem;
 }
 
 .article.small:hover{
   transform: translateX(.5rem);
-  filter: brightness(1.1);
-  transition: all .2s;
+  filter: brightness(1.4);
+  transition: all .1s;
 }
 
 .article.big{
@@ -35,8 +36,9 @@
 
 .article .text,
 .article .list{
-  color: hsl(0, 0%, 0%);
+  color: hsl(20, 100%, 9%);
   font-size: 0.9rem;
+  flex: 1; /* Prend tout l'espace disponible */
 }
 
 .article.small .title{
@@ -44,23 +46,26 @@
   margin: 0 0 .5rem;
 }
 
-.article .title{
+.article .title {
   font-size: 1.2rem;
   line-height: 3;
+  margin-bottom: 1rem;
 }
 
-.article .image{
+.article .image {
   max-height: 33vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
+  flex: 0 0 40%; /* Fixer la largeur de l'image */
 }
 
-.article .image img{
-  border-radius: .5rem;
-  object-fit: contain;
+.article .image img {
+  border-radius: 0.5rem;
+  object-fit: cover; /* Assurer un bon ajustement de l'image */
   width: 100%;
+  height: auto;
 }
 
 .article.big .close{
@@ -73,7 +78,7 @@
   right: 1rem;
   top: 2rem;
   transition: all .2s;
-  color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 0%);
 }
 
 .article .close:hover{
