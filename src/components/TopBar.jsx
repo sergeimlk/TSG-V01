@@ -6,6 +6,7 @@ import '../css/topbar.css'
 function TopBar({
   onOpenFilters,
   searchQuery,
+  onSearch,
   keycloak,
   seeFilters
 }){
