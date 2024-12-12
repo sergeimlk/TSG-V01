@@ -28,12 +28,12 @@ function TopBar({
           TROUBLESHOOTING GUIDE 
         </h1>
         <div className="connect">
-          {keycloak?.tokenParsed?.given_name || 'Utilisateur'} {/* Display the user's name */}
-          <img 
+          {keycloak?.tokenParsed?.given_name} {/* Display the user's name */}
+          {/* <img 
             src={profileImageUrl} 
             alt="User  profile" 
             className="profileImage" 
-          />
+          /> */}
           <FontAwesomeIcon 
             icon={faArrowRightFromBracket} 
             className="logoutIcon" 

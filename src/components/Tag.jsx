@@ -18,10 +18,10 @@ function Tag({value, onClick}) {
       onClick={onTouch}
     >
       {value}
-      <FontAwesomeIcon
+      {/* <FontAwesomeIcon
         color="#EF863F"
         icon={faXmark}
-      />
+      /> */}
     </button>
   );
 }

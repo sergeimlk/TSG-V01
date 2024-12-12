@@ -1,22 +1,21 @@
 .filtersTab {
   border: hsl(0, 0%, 100%) solid 0.05rem;
   color: #F18841;
-  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.05), hsla(0, 0%, 100%, 0.05));
+  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5));
   box-shadow: inset 0 0 0 0.01rem hsla(0, 0%, 100%, 0.5), 0 0px 0px #83471fcb;
   backdrop-filter: blur(20px);
   position: fixed;
   left: 1rem;
-  top: 5rem; /* Place la section en haut de l'écran */
+  top: -8rem; /* Place la section en haut de l'écran */
   padding: 1rem;
-  height: calc(100% - 2rem); /* Ajuste la hauteur pour occuper tout l'espace sauf marges */
+  height: calc(100% - 35rem); /* Ajuste la hauteur pour occuper tout l'espace sauf marges */
   transition: all 0.2s;
   border-radius: 1.5rem;
   gap: 1rem;
   display: flex;
   flex-direction: column;
   width: 20rem;
-  height: 80%;
-  z-index: 4;
+  z-index: 1;
   overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
 }
 
@@ -27,56 +26,24 @@
   margin-bottom: 1rem;
 }
 
-.filtersButton {
-  border-radius: 1.5rem; /* Rend le bouton plus arrondi */
-  padding: 10px 15px; /* Ajuste la taille du bouton */
-  border: none; /* Supprime la bordure par défaut */
-  background-color: #4CAF50; /* Couleur de fond par défaut */
-  color: #fff; /* Couleur du texte */
-  cursor: pointer; /* Change le curseur en pointeur */
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease-in-out; /* Ajoute une transition pour le hover */
-}
-
-.filtersButton:hover {
-  background-color: #3e8e41; /* Couleur pour le hover */
-  transform: scale(1.05); /* Ajoute un léger agrandissement */
-}
-
-.filtersButton:active {
-  background-color: #2e6d31; /* Couleur pour le clic */
-  transform: scale(0.95); /* Réduction lors du clic */
-}
-
-.filtersButton.enabled {
-  background-color: #4CAF50; /* Couleur pour l'état actif */
-}
-
-.filtersButton.disabled {
-  background-color: #ccc; /* Couleur pour l'état désactivé */
-  cursor: pointer; /* Change le curseur en interdit */
-}
-
 .searchContainer {
   padding: 1rem;
   display: flex;
   justify-content: center;
   position: sticky;
   top: 0; /* Fixe la barre de recherche en haut */
-  background: #fff;
   z-index: 2;
   border-bottom: 1px solid #F18841;
 }
 
 .searchInput {
-  width: 100%;
+  height: 3rem;
+  width: 15rem;
   padding: 0.5rem;
-  border: 1px solid #F18841;
+  border: 1px solid #ffffff;
   border-radius: 1rem;
-  background-color: #fff;
-  color: #100C08;
+  color: #a5a5a5;
+  background-color: #f1874127;
 }
 
 .tagContainer {
@@ -84,3 +51,10 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+
+
+
+
+h3 { 
+font-size: 1.8rem;}
