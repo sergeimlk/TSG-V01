@@ -87,7 +87,7 @@
 
 /*BOTTOM LEFT*/
 
-.topBar .bottom .searchbar {
+.topBar .bottom {
   background-color: hsla(0, 0%, 100%, 0.20);
   display: flex;
   align-items: center;
@@ -100,7 +100,7 @@
   position: relative;
 }
 
-.topBar .bottom .searchbar svg {
+.topBar .bottom svg {
   position: absolute;
   pointer-events: none;
 }
@@ -118,7 +118,7 @@
   border-radius: .5rem;
 }
 
-.topBar .bottom .searchbar:focus-within {
+.topBar .bottom {
   filter: contrast(1.3);
 }
 
@@ -128,4 +128,19 @@
   opacity: 0.9;
   pointer-events: none;
   user-select: none;
+}
+
+.connect {
+  margin-bottom: -3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.profileImage {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
 }

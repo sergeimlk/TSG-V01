@@ -2,40 +2,84 @@
   border: hsl(0, 0%, 100%) solid 0.05rem;
   color: #F18841;
   background: linear-gradient(to top, hsla(0, 0%, 100%, 0.05), hsla(0, 0%, 100%, 0.05));
-  box-shadow: inset 0 0 0 .01rem hsla(0, 0%, 100%, 0.5), 0 0px 0px #83471fcb; 
-  backdrop-filter: blur(20px); /* Flou appliqué à l'arrière-plan */
+  box-shadow: inset 0 0 0 0.01rem hsla(0, 0%, 100%, 0.5), 0 0px 0px #83471fcb;
+  backdrop-filter: blur(20px);
   position: fixed;
   left: 1rem;
-  bottom: 1rem;
+  top: 1rem; /* Place la section en haut de l'écran */
   padding: 1rem;
-  height: calc(100% - 8.5rem);
-  transition: all .2s;
+  height: calc(100% - 2rem); /* Ajuste la hauteur pour occuper tout l'espace sauf marges */
+  transition: all 0.2s;
   border-radius: 1.5rem;
   gap: 1rem;
   display: flex;
   flex-direction: column;
   width: 20rem;
   z-index: 1;
+  overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
 }
 
-.filtersTab.disabled{
-  transform: translateX(-1rem);
-  opacity: 0;
-  pointer-events: none;
+.filtersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-.filtersTab h3{
-  margin-top: -40rem;
-  font-size: 1.5rem;
-  color: #F18841;
+.filtersButton {
+  border-radius: 1.5rem; /* Rend le bouton plus arrondi */
+  padding: 10px 15px; /* Ajuste la taille du bouton */
+  border: none; /* Supprime la bordure par défaut */
+  background-color: #4CAF50; /* Couleur de fond par défaut */
+  color: #fff; /* Couleur du texte */
+  cursor: pointer; /* Change le curseur en pointeur */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease-in-out; /* Ajoute une transition pour le hover */
 }
 
-.tagContainer{
+.filtersButton:hover {
+  background-color: #3e8e41; /* Couleur pour le hover */
+  transform: scale(1.05); /* Ajoute un léger agrandissement */
+}
+
+.filtersButton:active {
+  background-color: #2e6d31; /* Couleur pour le clic */
+  transform: scale(0.95); /* Réduction lors du clic */
+}
+
+.filtersButton.enabled {
+  background-color: #4CAF50; /* Couleur pour l'état actif */
+}
+
+.filtersButton.disabled {
+  background-color: #ccc; /* Couleur pour l'état désactivé */
+  cursor: pointer; /* Change le curseur en interdit */
+}
+
+.searchContainer {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0; /* Fixe la barre de recherche en haut */
+  background: #fff;
+  z-index: 2;
+  border-bottom: 1px solid #F18841;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #F18841;
+  border-radius: 1rem;
+  background-color: #fff;
+  color: #100C08;
+}
+
+.tagContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem;
-}
-
-html, body {
-  height: 100%;
+  gap: 0.5rem;
 }

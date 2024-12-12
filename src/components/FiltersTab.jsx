@@ -2,13 +2,13 @@ import React from "react";
 import "../css/filtersTab.css";
 import getSearchData from "../Shared/data";
 import Tag from "./Tag";
-import { performSearch } from '../Shared/settings';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function FiltersTab({
   visible,
   onClose,
   onSelect,
-  setSelectedPage,
   setSearchQuery,
   setSearchResults,
   tags,
@@ -19,15 +19,10 @@ function FiltersTab({
   const getAllFilters = () => {
     const allFilters = [];
 
-    getSearchData().map((data, id) => {
+    getSearchData().map((data) => {
       if (data.filters) {
         data.filters.map((filter, id) => {
-          const filterTag = <Tag
-            key={id}
-            value={filter}
-            onClick={onSelect}
-          />
-
+          const filterTag = <Tag key={id} value={filter} onClick={onSelect} />;
           if (allFilters.every((elem) => elem.key !== id.toString())) {
             allFilters.push(filterTag);
           }
@@ -36,12 +31,25 @@ function FiltersTab({
     });
 
     return allFilters;
-  }
+  };
 
   return (
     <section className={'filtersTab shadow ' + (visible ? 'enabled' : 'disabled')}>
+
+      
+      {/* En-tête avec bouton "Filtres" */}
       <div className="filtersHeader">
-        <button onClick={onClose} className="closeButton">Close Filters</button>
+        <button
+          className={'filtersButton ' + (visible ? 'enabled' : 'disabled')}
+          onClick={onClose}
+        >
+          <FontAwesomeIcon icon={faBars} />
+          Filters
+        </button>
+      </div>
+
+      {/* Barre de recherche */}
+      <div className="searchContainer">
         <input
           type="text"
           value={searchQuery}
@@ -49,8 +57,9 @@ function FiltersTab({
           placeholder="Search..."
           className="searchInput"
         />
-        <img src="/path/to/logo.png" alt="Logo" className="logo" />
       </div>
+
+      {/* Tags de filtres */}
       <h3>Devices</h3>
       <div className="tagContainer">
         {getAllFilters()}

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import FiltersTab from './FiltersTab';
-import TopBar from './TopBar';
 import "../css/app.css";
 import Article from './Article';
 import { performSearch } from '../Shared/settings';
+import TopBar from './TopBar';
+import { faArrowRightFromBracket, faBars, faSearch, } from "@fortawesome/free-solid-svg-icons";
+
 
 function isChrome() {
   const userAgent = navigator.userAgent;
@@ -63,14 +65,18 @@ function Homepage({ keycloak, isAuth }) {
 
   return (
     <main>
+      {/* Barre de recherche en haut */}
+
+
       <TopBar
         onOpenFilters={onClose}
         searchQuery={searchQuery}
         seeFilters={seeFilters}
         keycloak={keycloak}
       />
+
       <div className={`mainContent ${isChrome() && 'chrome'}`}>
-        {isExpert && <Article />}
+        {/* Section des filtres */}
         <FiltersTab
           visible={seeFilters}
           onClose={onClose}
@@ -82,6 +88,8 @@ function Homepage({ keycloak, isAuth }) {
           tags={tags}
           searchQuery={searchQuery}
         />
+
+        {/* Résultats de la recherche */}
         <div className='summary reducedWidth'>
           <p>{searchResults.length + " results found"}</p>
           <p>Winback TSG V0.3.1</p>
