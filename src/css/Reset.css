@@ -34,7 +34,7 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font-family: sans-serif;
-  font-weight: 400;
+  font-weight: 800;
   vertical-align: baseline;
 }
 
@@ -148,7 +148,7 @@ audio:not([controls]) {
 }
 
 .shadow{
-  box-shadow: 0 0 5rem #000000a0;
+  /* box-shadow: 0 0 5rem #000000a0; */
 }
 
 .reducedWidth{

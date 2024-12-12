@@ -1,6 +1,6 @@
 .article{
   color: #F18841;
-  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.05), hsla(0, 0%, 100%, 0.05));
+  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5));
   padding: 1rem;
   text-align: left;
   display: flex;
@@ -38,8 +38,8 @@
 
 .article .text,
 .article .list{
-  color: #F5F5F5;
-  font-size: 0.9rem;
+  color: #3e3e3e;
+  font-size: 1.1rem;
   flex: 1; /* Prend tout l'espace disponible */
 }
 

@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 function Article({
   page,
   id = 0,
