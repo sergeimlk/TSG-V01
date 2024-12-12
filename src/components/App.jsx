@@ -10,28 +10,24 @@ function isChrome() {
   return /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
 }
 
+function Homepage({ keycloak, isAuth }) {
+  console.log('kclogin', isAuth, keycloak.isTokenExpired(), keycloak);
 
-
-function Homepage({
-  keycloak,
-  isAuth
-}) {
-
-  //console.log('kclogin',isAuth,keycloak.isTokenExpired(),keycloak)
-  const [tags,setTags] = useState([])
-  const [searchQuery, setSearchQuery] = useState("Error");
+  const [tags, setTags] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("Error 237");
   const [searchResults, setSearchResults] = useState(performSearch(searchQuery));
-  const [selectedPage, setSelectedPage] = useState(false)
-  const [seeFilters,setSeeFilters] = useState(false)
-  const [isExpert,setIsExpert] = useState(true)
+  const [selectedPage, setSelectedPage] = useState(false);
+  const [seeFilters, setSeeFilters] = useState(false);
+  const [isExpert, setIsExpert] = useState(false); // Initialisé à false
 
-  /*useEffect(() => {
-    const tokenExpert = keycloak?.tokenParsed?.["resource_access"]?.["winback-tsg"]?.['roles']?.includes('expert')
+  useEffect(() => {
+    const tokenExpert = keycloak?.tokenParsed?.["resource_access"]?.["winback-tsg"]?.['roles']?.includes('expert');
 
-    if(isExpert !== tokenExpert){
-      setIsExpert(tokenExpert)
+    if (isExpert !== tokenExpert) {
+      setIsExpert(tokenExpert);
     }
-  },[isExpert, keycloak?.tokenParsed])*/
+  }, [keycloak?.tokenParsed]); // Dépendance uniquement sur keycloak.tokenParsed
+
 
   const onSearch = (e) => {
     const query = e.target.value;
@@ -81,6 +77,7 @@ function Homepage({
       <div
         className={`mainContent ${isChrome() && 'chrome'}`}
       >
+         {isExpert && <Article />} 
         <FiltersTab
           visible={seeFilters}
           onClose={onClose}

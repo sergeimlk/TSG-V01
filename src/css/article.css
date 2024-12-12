@@ -80,7 +80,7 @@
   right: 1rem;
   top: 2rem;
   transition: all .2s;
-  color: hsl(0, 0%, 0%);
+  color: #F5F5F5;
 }
 
 .article .close:hover{
