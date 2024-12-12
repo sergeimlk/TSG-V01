@@ -1,27 +1,43 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faBars } from "@fortawesome/free-solid-svg-icons";
 import '../css/topbar.css';
 
-function TopBar({ onOpenFilters, keycloak, seeFilters }) {
-  const userName = keycloak?.tokenParsed?.given_name || 'Utilisateur';
+function TopBar({
+  onOpenFilters,
+  keycloak,
+  seeFilters
+}) {
   const profileImageUrl = keycloak?.tokenParsed?.picture || '/default-profile.png';
+
+  const handleLogout = () => {
+    keycloak.logout(); // Call the logout method from the keycloak object
+  };
 
   return (
     <div className="topBar shadow">
       <div className="top reducedWidth">
-        <h1>TROUBLESHOOTING GUIDE</h1>
+        <button 
+          className={'filtersButton ' + (seeFilters ? 'enabled' : 'disabled')}
+          onClick={onOpenFilters}
+        > 
+          <FontAwesomeIcon icon={faBars} />
+          Filters
+        </button>
+        <h1 className="title">
+          TROUBLESHOOTING GUIDE 
+        </h1>
         <div className="connect">
-          <span>{userName}</span>
+          {keycloak?.tokenParsed?.given_name || 'Utilisateur'} {/* Display the user's name */}
           <img 
             src={profileImageUrl} 
-            alt="User profile" 
+            alt="User  profile" 
             className="profileImage" 
           />
           <FontAwesomeIcon 
             icon={faArrowRightFromBracket} 
             className="logoutIcon" 
-            onClick={onOpenFilters}
+            onClick={handleLogout} // Add the logout functionality
           />
         </div>
       </div>

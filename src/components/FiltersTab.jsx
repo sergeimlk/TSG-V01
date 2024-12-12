@@ -37,16 +37,7 @@ function FiltersTab({
     <section className={'filtersTab shadow ' + (visible ? 'enabled' : 'disabled')}>
 
       
-      {/* En-tête avec bouton "Filtres" */}
-      <div className="filtersHeader">
-        <button
-          className={'filtersButton ' + (visible ? 'enabled' : 'disabled')}
-          onClick={onClose}
-        >
-          <FontAwesomeIcon icon={faBars} />
-          Filters
-        </button>
-      </div>
+
 
       {/* Barre de recherche */}
       <div className="searchContainer">

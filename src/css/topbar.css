@@ -23,6 +23,8 @@
 
 /*TOP LEFT*/
 .filtersButton {
+  margin-bottom: -2.6rem;
+
   display: flex;
   align-items: flex-end;
   gap: .5rem;
@@ -49,10 +51,15 @@
 
 .topBar .top h1 {
   margin-top: auto;
-  margin-bottom: -0.8rem;
-  font-size: 1.8rem;
+  margin-bottom: -2.6rem;
+  font-size: 2.5rem;
   text-align: center;
   font-family: 'GothamMedium' !important;
+}
+
+h1 {
+  font-family: 'GothamMedium' !important;
+  font-weight: 500;
 }
 
 /*TOP RIGHT*/
@@ -138,9 +145,17 @@
 }
 
 .profileImage {
+  cursor: pointer;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid white;
+}
+
+.logoutIcon {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: hsl(0, 0%, 100%);
 }

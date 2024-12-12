@@ -6,7 +6,7 @@
   backdrop-filter: blur(20px);
   position: fixed;
   left: 1rem;
-  top: 1rem; /* Place la section en haut de l'écran */
+  top: 5rem; /* Place la section en haut de l'écran */
   padding: 1rem;
   height: calc(100% - 2rem); /* Ajuste la hauteur pour occuper tout l'espace sauf marges */
   transition: all 0.2s;
@@ -15,7 +15,8 @@
   display: flex;
   flex-direction: column;
   width: 20rem;
-  z-index: 1;
+  height: 80%;
+  z-index: 4;
   overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
 }
 
