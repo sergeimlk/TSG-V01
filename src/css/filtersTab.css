@@ -1,56 +1,110 @@
+/* Style global du volet de filtres */
 .filtersTab {
-  border: hsl(0, 0%, 100%) solid 0.05rem;
-  color: #F18841;
-  background: linear-gradient(to top, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5));
-  box-shadow: inset 0 0 0 0.01rem hsla(0, 0%, 100%, 0.5), 0 0px 0px #83471fcb;
-  backdrop-filter: blur(20px);
   position: fixed;
-  left: 1rem;
-  top: -8rem; /* Place la section en haut de l'écran */
-  padding: 1rem;
-  height: calc(100% - 35rem); /* Ajuste la hauteur pour occuper tout l'espace sauf marges */
-  transition: all 0.2s;
-  border-radius: 1.5rem;
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  width: 20rem;
-  z-index: 1;
-  overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
+  left: 0;
+  top: 7rem; /* Juste sous la navbar */
+  height: calc(100% - 4rem); /* Hauteur sous la navbar */
+  width: 18rem;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  border-right: 1px solid hsl(0, 0%, 90%);
+  transform: translateX(-100%); /* État fermé */
+  transition: transform 0.3s ease-in-out;
+  z-index: 900; /* Derrière la navbar */
+  border-radius: 0 2rem 0 0 ;
 }
 
+/* État ouvert */
+.filtersTab.open {
+  transform: translateX(0); /* Visible */
+}
+
+/* En-tête des filtres */
 .filtersHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
 }
 
-.searchContainer {
-  padding: 1rem;
+.filtersHeader h3 {
+  font-size: 1.2rem;
+  color: #F18841;
+}
+
+.closeButton {
+  background: transparent;
+  border: 1px solid #F18841;
+  color: #F18841;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.closeButton:hover {
+  background-color: #F18841;
+  color: #fff;
+}
+
+/* Conteneur de la loupe */
+.loupeContainer {
+  position: fixed;
+  top: 5rem; /* Position en partie sous la navbar */
+  left: 0;
+  width: 3.5rem;
+  height: 3.5rem;
   display: flex;
   justify-content: center;
-  position: sticky;
-  top: 0; /* Fixe la barre de recherche en haut */
-  z-index: 2;
-  border-bottom: 1px solid #F18841;
+  align-items: center;
+  background: #fff;
+  border-radius: 0 50% 50% 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 950; /* Devant la navbar */
+  transform: translateY(-0.5rem); /* Décalage supplémentaire pour dépasser */
+}
+
+.loupeContainer.hidden {
+  width: 2rem; 
+  height: 2rem; /* Dimensions de la loupe */
+  transform: translateY(-1rem); /* Décalage supplémentaire pour dépasser */
+  margin-top: 8rem;
+}
+
+/* Style de la loupe */
+.loupe {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #F18841;
+}
+
+/* Barre de recherche */
+.searchContainer {
+  padding: 1rem;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+  margin-left: 1.5rem;
 }
 
 .searchInput {
-  height: 3rem;
-  width: 15rem;
+  width: 100%;
+  height: 2.5rem;
   padding: 0.5rem;
-  border: 1px solid #ffffff;
-  border-radius: 1rem;
-  color: #a5a5a5;
-  background-color: #e4e4e4;
+  border: 1px solid #F18841;
+  border-radius: 0.5rem;
+  background: #f9f9f9;
+  color: #333;
+  
 }
 
+/* Section des tags */
 .tagContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
+  padding: 1rem;
+  margin-left: 2rem;
 
-h3 { 
-font-size: 1.8rem;}
+}

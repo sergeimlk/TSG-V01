@@ -32,7 +32,6 @@ function Article({
     },
   };
 
-  // ...
 
   const reducedData = []; // Définition de la variable ici
   for(let i = 0 ; i < jsonData.length; i++){

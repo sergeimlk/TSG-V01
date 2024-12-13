@@ -4,13 +4,6 @@ import "../css/app.css";
 import Article from './Article';
 import { performSearch } from '../Shared/settings';
 import TopBar from './TopBar';
-import { faArrowRightFromBracket, faBars, faSearch, } from "@fortawesome/free-solid-svg-icons";
-
-
-function isChrome() {
-  const userAgent = navigator.userAgent;
-  return /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
-}
 
 function Homepage({ keycloak, isAuth }) {
   console.log('kclogin', isAuth, keycloak.isTokenExpired(), keycloak);
@@ -33,14 +26,14 @@ function Homepage({ keycloak, isAuth }) {
   const onClose = () => {
     setSeeFilters(!seeFilters);
     setSelectedPage(-1);
-  }
+  };
 
   const onOpen = (title) => {
     if (selectedPage !== title) {
       setSeeFilters(false);
       setSelectedPage(title);
     }
-  }
+  };
 
   const onSelectTag = (value) => {
     const index = tags.indexOf(value);
@@ -55,19 +48,17 @@ function Homepage({ keycloak, isAuth }) {
       ...performSearch(searchQuery, newTags),
     ]);
     setSelectedPage(false);
-  }
+  };
 
   const onSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
     setSearchResults(performSearch(query, tags));
-  }
+  };
 
   return (
     <main>
       {/* Barre de recherche en haut */}
-
-
       <TopBar
         onOpenFilters={onClose}
         searchQuery={searchQuery}
@@ -75,7 +66,7 @@ function Homepage({ keycloak, isAuth }) {
         keycloak={keycloak}
       />
 
-      <div className={`mainContent ${isChrome() && 'chrome'}`}>
+      <div className="mainContent">
         {/* Section des filtres */}
         <FiltersTab
           visible={seeFilters}
@@ -99,15 +90,17 @@ function Homepage({ keycloak, isAuth }) {
           if (selectedPage === item.title) {
             isBig = true;
           }
-          return <Article
-            isExpert={isExpert}
-            page={item.title}
-            id={id}
-            key={id}
-            isBig={isBig}
-            onClose={() => setSelectedPage(false)}
-            onOpen={() => onOpen(item.title)}
-          />
+          return (
+            <Article
+              isExpert={isExpert}
+              page={item.title}
+              id={id}
+              key={id}
+              isBig={isBig}
+              onClose={() => setSelectedPage(false)}
+              onOpen={() => onOpen(item.title)}
+            />
+          );
         })}
       </div>
     </main>
