@@ -1,7 +1,7 @@
 .article{
   color: #F18841;
   background: linear-gradient(to top, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5));
-  padding: 1rem;
+  padding: 1rem 3rem;
   text-align: left;
   display: flex;
   flex-direction: column;

@@ -84,7 +84,7 @@ main::before {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #f18741ac;
+  background-color: #F18841;
   border: solid 2px #F18841;
   border-radius: 1rem;
   transition: all .2s;
