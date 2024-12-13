@@ -1,10 +1,9 @@
-import React, {useEffect} from 'react';
-import '../css/article.css'
+import React, { useEffect } from 'react';
+import '../css/article.css';
 import files from '../Shared/Ressources/files';
 import { motion, useAnimation } from 'framer-motion';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 
 function Article({
   page,
@@ -18,44 +17,42 @@ function Article({
   const jsonData = files.filesMap[page].default.data;
   const imgData = files.filesMap[page].default.images;
   const controls = useAnimation();
-  const animationVariants = { // Définition des variants ici
+  const animationVariants = {
     hidden: {
       opacity: 0,
       height: 0,
-      margin:0,
+      margin: 0,
     },
     visible: {
       opacity: 1,
       height: 'auto',
       transition: { duration: 0.2 },
-      margin:" 0 0 .5rem"
+      margin: '0 0 0.5rem',
     },
   };
 
-
-  const reducedData = []; // Définition de la variable ici
-  for(let i = 0 ; i < jsonData.length; i++){
+  const reducedData = [];
+  for (let i = 0; i < jsonData.length; i++) {
     const data = jsonData[i];
-    if((data.type === 'title') && (data.data === 'Repair' || data.data === 'Solution')){
+    if (data.type === 'title' && (data.data === 'Repair' || data.data === 'Solution')) {
       break;
-    }
-    else{
-      reducedData.push(data)
+    } else {
+      reducedData.push(data);
     }
   }
 
-  const smallData = jsonData.filter((elem,id) => id === 0 || id === 2); // Définition de la variable ici
+  const smallData = jsonData.filter((elem, id) => id === 0 || id === 2);
 
   useEffect(() => {
-    if(isBig){
-      controls.start("visible")
-    }else{
-      controls.start("hidden")
+    if (isBig) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
     }
-  })
+  });
 
   const handleClose = () => {
-    controls.start("hidden").then(() => {
+    controls.start('hidden').then(() => {
       onClose();
     });
   };
@@ -75,14 +72,14 @@ function Article({
         className={className}
         key={id}
         style={{
-          width:"100%",
-          ...style
+          width: '100%',
+          ...style,
         }}
-        {...(animate && { // Conditionally add motion props if id !== 0
+        {...(animate && {
           initial: isBig ? 'hidden' : 'hidden',
           animate: controls,
-          exit: "exit",
-          variants: animationVariants
+          exit: 'exit',
+          variants: animationVariants,
         })}
         {...props}
       >
@@ -91,122 +88,117 @@ function Article({
     );
   };
 
-  const parseImg = (data,id) => {
+  const parseImg = (data, id) => {
     return (
       <motion.div
         key={id}
-        className='image'
+        className="image"
         initial="hidden"
         animate={controls}
         exit="exit"
-        style={{
-        }}
         variants={animationVariants}
       >
-        <img
-          key={id}
-          src={imgData[data.data]}
-        />
+        <img key={id} src={imgData[data.data]} alt="Article visual" />
       </motion.div>
     );
   };
 
-  const parseSwitch = (data,id,isDemo) => {
+  const parseSwitch = (data, id, isDemo) => {
     const type = data.type;
     const innerData = data.data;
     switch (type) {
       case 'title':
-        return <AnimatedElement
-          Component={'h2'}
-          className={'title'}
-          animate={isDemo ? false : (id !== 0)}
-        >
-          {innerData.split('_').join(' ')}
-        </AnimatedElement>
+        return (
+          <AnimatedElement
+            Component="h2"
+            className="title"
+            animate={isDemo ? false : id !== 0}
+          >
+            {innerData.split('_').join(' ')}
+          </AnimatedElement>
+        );
       case 'text':
-        return <AnimatedElement
-          Component={'p'}
-          className={'text'}
-          animate={isDemo ? false : (id !== 2)}
-        >
-          {data.data}
-        </AnimatedElement>
+        return (
+          <AnimatedElement
+            Component="p"
+            className="text"
+            animate={isDemo ? false : id !== 2}
+          >
+            {data.data}
+          </AnimatedElement>
+        );
       case 'list':
-        return <AnimatedElement
-          Component={'p'}
-          className={'list'}
-          style={{
-            paddingLeft:data.indentation / 3,
-          }}
-        >
-          {data.data}
-        </AnimatedElement>
+        return (
+          <AnimatedElement
+            Component="p"
+            className="list"
+            style={{
+              paddingLeft: data.indentation / 3,
+            }}
+          >
+            {data.data}
+          </AnimatedElement>
+        );
       case 'image':
-        return parseImg(data);
+        return parseImg(data, id);
       default:
         break;
     }
   };
 
   const parseAll = () => {
-    if(isBig){
+    if (isBig) {
       let dataToUse = reducedData;
-      if(isExpert){
-        dataToUse = jsonData
+      if (isExpert) {
+        dataToUse = jsonData;
       }
-      return dataToUse.map((elem,id) => parseSwitch(elem,id,false));
+      return dataToUse.map((elem, id) => parseSwitch(elem, id, false));
     }
-    return smallData.map((elem,id) => parseSwitch(elem,id,true));
+    return smallData.map((elem, id) => parseSwitch(elem, id, true));
   };
 
   const handleOutsideClick = (event) => {
-    if (!event.target.classList.contains('article')) {
+    if (!event.target.closest('.article')) {
       handleClose();
     }
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
 
-  return (
-    jsonData ? (
-      <button
-        className={`article reducedWidth ${isBig ? 'big' : 'small'} `}
-        id={id}
-        href={`#${id}`}
-        key={id}
-        onClick={onOpen}
-        style={{
-          flexDirection : jsonData[0].data.includes("REPAIR") ? "row" : 'column',
-          flexWrap : jsonData[0].data.includes("REPAIR") ? "wrap" : 'nowrap'
-        }}
-        {...props}
-      >
-        {
-          isBig &&
-            <AnimatedElement
-              Component={"button"}
-              className={'close'}
-              onClick={handleClose}
-              style={{
-                width:"auto"
-              }}
-            >
-              <FontAwesomeIcon
-                icon={faClose}
-              />
-            </AnimatedElement>
-        }
-        {
-          parseAll()
-        }
-      </button>
-    )
-    :
+  return jsonData ? (
+    <button
+      className={`article reducedWidth ${isBig ? 'big' : 'small'}`}
+      id={id}
+      aria-expanded={isBig ? 'true' : 'false'}
+      href={`#${id}`}
+      key={id}
+      onClick={onOpen}
+      style={{
+        flexDirection: jsonData[0].data.includes('REPAIR') ? 'row' : 'column',
+        flexWrap: jsonData[0].data.includes('REPAIR') ? 'wrap' : 'nowrap',
+      }}
+      {...props}
+    >
+      {isBig && (
+        <AnimatedElement
+          Component="button"
+          className="close"
+          onClick={handleClose}
+          style={{
+            width: 'auto',
+          }}
+        >
+          <FontAwesomeIcon icon={faClose} />
+        </AnimatedElement>
+      )}
+      {parseAll()}
+    </button>
+  ) : (
     <div />
   );
 }
@@ -219,10 +211,9 @@ export default React.memo(Article, (prevProps, nextProps) => {
     return false;
   }
   for (let key of prevKeys) {
-    if ((key === 'onClose') || ( key === 'onOpen')) {
-      continue; // Skip comparison for onClose if you are sure it doesn't change the behavior
-    }
-    else if (prevProps[key] !== nextProps[key]) {
+    if (key === 'onClose' || key === 'onOpen') {
+      continue;
+    } else if (prevProps[key] !== nextProps[key]) {
       return false;
     }
   }

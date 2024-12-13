@@ -1,4 +1,4 @@
-.article{
+.article {
   color: #F18841;
   background: linear-gradient(to top, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5));
   padding: 1rem 3rem;
@@ -6,46 +6,47 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all .2s !important;
+  transition: all 0.2s !important;
   transform: translateX(0rem);
   filter: brightness(1);
   border-radius: 1.5rem;
   border: hsla(0, 0%, 100%, 0.5) solid 0.05rem;
   backdrop-filter: blur(20px); /* Flou appliqué à l'arrière-plan */
+  max-width: 100%; /* Responsive */
 }
 
-.article.small{
+.article.small {
   padding: 1.5rem 3rem;
-  transition: all .2s;
+  transition: all 0.2s;
   cursor: pointer;
   transform: translateX(0rem);
   filter: brightness(1);
   border-radius: 1.5rem;
 }
 
-.article.small:hover{
-  transform: translateX(.5rem);
+.article.small:hover {
+  transform: translateX(0.5rem);
   filter: brightness(1.2);
-  transition: all .1s;
+  transition: all 0.1s;
   border: hsla(0, 0%, 100%, 0.75) solid 0.05rem;
 }
 
-.article.big{
-  transition: all .2s;
-  gap: .2rem;
+.article.big {
+  transition: all 0.2s;
+  gap: 0.2rem;
   cursor: pointer;
 }
 
 .article .text,
-.article .list{
+.article .list {
   color: #3e3e3e;
   font-size: 1.1rem;
-  flex: 1; /* Prend tout l'espace disponible */
+  flex: 1;
 }
 
-.article.small .title{
+.article.small .title {
   line-height: 1.5;
-  margin: 0 0 .5rem;
+  margin: 0 0 0.5rem;
 }
 
 .article .title {
@@ -60,30 +61,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0 0 40%; /* Fixer la largeur de l'image */
+  flex: 0 0 40%;
 }
 
 .article .image img {
   border-radius: 0.5rem;
-  object-fit: cover; /* Assurer un bon ajustement de l'image */
+  object-fit: cover;
   width: 100%;
   height: auto;
+  transition: transform 0.3s ease-in-out; /* Animation au survol */
 }
 
-.article.big .close{
+.article .image img:hover {
+  transform: scale(1.05); /* Zoom léger */
+}
+
+.article.big .close {
   cursor: pointer;
   pointer-events: all;
 }
 
-.article .close{
+.article .close {
   position: absolute;
   right: 1rem;
   top: 2rem;
-  transition: all .2s;
+  transition: all 0.2s;
   color: #F5F5F5;
 }
 
-.article .close:hover{
+.article .close:hover {
   color: #ff0000;
   transform: scale(1.3);
 }
