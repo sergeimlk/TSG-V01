@@ -18,17 +18,24 @@
   background-color: #4CAF50; /* Couleur pour l'état actif */
   color: #fff; /* Assurez-vous que le texte est lisible */
   cursor: pointer; /* Change le curseur en pointeur */
+  border: solid .01rem rgb(124, 248, 128);
 }
 
 .tag.disabled:hover {
-background-color: #F18841;
+background: linear-gradient(to bottom, #f1874190, #F18841);
 color: #ffffff;
+border: solid .01rem;
 } 
 
+/* .tag.disabled:hover {
+background: linear-gradient(to bottom, #f1874190, #F18841);
+color: #ffffff;
+}  */
+
 .tag.disabled {
-  background-color: #F18841; /* Couleur pour l'état désactivé */
+  background-color: #F18841;
   color: #fff; /* Assurez-vous que le texte est lisible */
   cursor: pointer; /* Change le curseur en interdit */
-  opacity: 0.7; /* Optionnel : ajoutez une opacité pour indiquer que c'est désactivé */
+  opacity: 1; /* Optionnel : ajoutez une opacité pour indiquer que c'est désactivé */
 }
 

@@ -27,7 +27,7 @@
   transform: translateX(.5rem);
   filter: brightness(1.2);
   transition: all .1s;
-  border: hsla(0, 0%, 100%, 0.85) solid 0.05rem;
+  border: hsla(0, 0%, 100%, 0.75) solid 0.05rem;
 }
 
 .article.big{

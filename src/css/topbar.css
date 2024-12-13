@@ -1,11 +1,11 @@
 .topBar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Change de column à row */
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Espacement entre les éléments */
   height: 6.5rem;
   width: 100%;
-  padding: 1rem 0rem;
+  padding: 1rem 2rem; /* Ajustement des marges pour les bords */
   background: linear-gradient(to top, #ee6e18, #F18841);
   z-index: 2;
 }
@@ -13,16 +13,42 @@
 /*TOP*/
 
 .topBar .top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-grow: 1; /* Permet au titre de prendre l'espace disponible */
+  text-align: center;
+  font-family: 'GothamMedium' !important;
+  color: #fff;
+}
+
+.topBar .wblogo {
+  width: 17rem; /* Taille du logo ajustée */
+  margin-left: 1rem;
+  filter: drop-shadow(2px 2px 10px rgba(136, 48, 0, 0.5));
+}
+
+.logoutIcon {
+  cursor: pointer;
+  width: 1.5rem;
   height: 1.5rem;
-  color: hsl(0, 0%, 100%);
+  color: #fff;
+  transition: color 0.2s ease-in-out;
+}
+
+.logoutIcon:hover {
+  color: #ff3131;
+  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.6));
+}
+
+.connect {
+  size: 20rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Espacement entre le nom du user et l'icône */
+  color: #fff;
 }
 
 /*TOP LEFT*/
 /* Ensure that the filters buttons are aligned at the top */
+
 .filtersButton {  
   height: 4rem;
   width: 10rem;
@@ -41,7 +67,7 @@
   transition: all 0.3s ease-in-out; /* Ajoute une transition pour le hover */
 }
 
-.filtersButton.enabled,
+/* .filtersButton.enabled,
 .filtersButton:hover {
   background: #F18841;
 }
@@ -53,32 +79,23 @@
 .filtersButton svg {
   font-size: 1.3rem;
   transition: all .2s;
-}
+} */
 
 
 /*TOP CENTER*/
 
-.topBar .top h1 {
-  margin-top: auto;
-  margin-bottom: -2.6rem;
+.topBar h1 {
+  margin-top: -2rem; /* Ajustez cette valeur pour le rapprocher du haut */
   font-size: 2.5rem;
   text-align: center;
   font-family: 'GothamMedium' !important;
-}
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Ombre portée sous le texte */
 
-h1 {
-  font-family: 'GothamMedium' !important;
-  font-weight: 500;
 }
 
 /*TOP RIGHT*/
 
-.connect {
-  display: flex;
-  gap: .5rem;
-}
-
-.connect button {
+/* .connect button {
   display: flex;
   gap: .5rem;
   cursor: pointer;
@@ -87,7 +104,9 @@ h1 {
 
 .connect button:hover {
   color: #F18841;
-}
+} */
+
+
 
 /*BOTTOM*/
 .topBar .bottom {
@@ -139,19 +158,12 @@ h1 {
 }
 
 /*BOTTOM RIGHT*/
-.topBar .bottom img {
+/* .topBar .bottom img {
   height: 1.5rem;
   opacity: 0.9;
   pointer-events: none;
   user-select: none;
-}
-
-.connect {
-  margin-bottom: -3.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
+} */
 
 /* .profileImage {
   cursor: pointer;
@@ -162,12 +174,6 @@ h1 {
   border: 2px solid white;
 } */
 
-.logoutIcon {
-  cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: hsl(0, 0%, 100%);
-}
 
 
 

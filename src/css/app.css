@@ -13,8 +13,8 @@
   --white-rgb: 255, 255, 255;
   --white-web: #FFFFFF;
 
+  --foncé-grey-web: #808080;
   --grey-web: #F5F5F5;
-  --grey-rgb: 245, 245, 245;
 } */
 
 main{
@@ -68,15 +68,16 @@ main::before {
 .summary{
   display: flex;
   justify-content: space-between;
-  color: hsl(0, 0%, 100%);
+  color: #808080;
 }
 
 * {
-  scrollbar-width: 8px 8px; /* For Firefox */
+  scrollbar-width: 1rem 1rem; /* For Firefox */
   box-sizing: border-box;
 }
 
 *::-webkit-scrollbar {
+  width: 12px; /* Réduit la largeur de la barre de défilement */
   background-color: transparent;
   opacity: 0;
   color: transparent;
@@ -85,11 +86,11 @@ main::before {
 *::-webkit-scrollbar-thumb {
   background-color: #f18741ac;
   border: solid 2px #F18841;
-  border-radius: 2rem;
+  border-radius: 1rem;
   transition: all .2s;
 }
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: #ffffff;
-  border-width: 0.25rem;
+  border-width: 0.3rem;
 }

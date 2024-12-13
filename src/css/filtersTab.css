@@ -43,7 +43,7 @@
   border: 1px solid #ffffff;
   border-radius: 1rem;
   color: #a5a5a5;
-  background-color: #f1874127;
+  background-color: #e4e4e4;
 }
 
 .tagContainer {
@@ -51,10 +51,6 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-
-
-
-
 
 h3 { 
 font-size: 1.8rem;}
