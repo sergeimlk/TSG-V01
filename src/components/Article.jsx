@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/article.css';
 import files from '../Shared/Ressources/files';
 import { motion, useAnimation } from 'framer-motion';
@@ -17,6 +17,8 @@ function Article({
   const jsonData = files.filesMap[page].default.data;
   const imgData = files.filesMap[page].default.images;
   const controls = useAnimation();
+  const [isImageBig, setIsImageBig] = useState(false);
+  const [bigImageSrc, setBigImageSrc] = useState('');
   const animationVariants = {
     hidden: {
       opacity: 0,
@@ -55,6 +57,16 @@ function Article({
     controls.start('hidden').then(() => {
       onClose();
     });
+  };
+
+  const handleImageClick = (src) => {
+    setBigImageSrc(src);
+    setIsImageBig(true);
+  };
+
+  const handleBigImageClose = () => {
+    setIsImageBig(false);
+    setBigImageSrc('');
   };
 
   const AnimatedElement = ({
@@ -97,6 +109,7 @@ function Article({
         animate={controls}
         exit="exit"
         variants={animationVariants}
+        onClick={() => handleImageClick(imgData[data.data])}
       >
         <img key={id} src={imgData[data.data]} alt="Article visual" />
       </motion.div>
@@ -171,33 +184,40 @@ function Article({
   }, []);
 
   return jsonData ? (
-    <button
-      className={`article reducedWidth ${isBig ? 'big' : 'small'}`}
-      id={id}
-      aria-expanded={isBig ? 'true' : 'false'}
-      href={`#${id}`}
-      key={id}
-      onClick={onOpen}
-      style={{
-        flexDirection: jsonData[0].data.includes('REPAIR') ? 'row' : 'column',
-        flexWrap: jsonData[0].data.includes('REPAIR') ? 'wrap' : 'nowrap',
-      }}
-      {...props}
-    >
-      {isBig && (
-        <AnimatedElement
-          Component="button"
-          className="close"
-          onClick={handleClose}
-          style={{
-            width: 'auto',
-          }}
-        >
-          <FontAwesomeIcon icon={faClose} />
-        </AnimatedElement>
+    <>
+      <button
+        className={`article reducedWidth ${isBig ? 'big' : 'small'}`}
+        id={id}
+        aria-expanded={isBig ? 'true' : 'false'}
+        href={`#${id}`}
+        key={id}
+        onClick={onOpen}
+        style={{
+          flexDirection: jsonData[0].data.includes('REPAIR') ? 'row' : 'column',
+          flexWrap: jsonData[0].data.includes('REPAIR') ? 'wrap' : 'nowrap',
+        }}
+        {...props}
+      >
+        {isBig && (
+          <AnimatedElement
+            Component="button"
+            className="close"
+            onClick={handleClose}
+            style={{
+              width: 'auto',
+            }}
+          >
+            <FontAwesomeIcon icon={faClose} />
+          </AnimatedElement>
+        )}
+        {parseAll()}
+      </button>
+      {isImageBig && (
+        <div className="big-image-overlay" onClick={handleBigImageClose}>
+          <img src={bigImageSrc} alt="Big visual" className="big-image" />
+        </div>
       )}
-      {parseAll()}
-    </button>
+    </>
   ) : (
     <div />
   );
